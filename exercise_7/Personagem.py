@@ -1,9 +1,10 @@
 from AbstractPersonagem import *
 
+
 class Personagem(AbstractPersonagem):
     def __init__(self, energia: int, habilidade: int,
                  velocidade: int, resistencia: int, tipo: Tipo):
-        if isinstance(tipo,Tipo) and tipo is not None:
+        if isinstance(tipo, Tipo) and tipo is not None:
             atributos = [energia, habilidade, velocidade, resistencia]
             error = False
             for atributo in atributos:
@@ -12,7 +13,7 @@ class Personagem(AbstractPersonagem):
                 else:
                     error = True
                     break
-            if error == False:
+            if error is False:
                 self.__energia = energia
                 self.__habilidade = habilidade
                 self.__velocidade = velocidade

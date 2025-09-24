@@ -22,7 +22,8 @@ class ControladorJogo(AbstractControladorJogo):
                                    velocidade: int,
                                    resistencia: int,
                                    tipo: Tipo) -> Personagem:
-        novo_personagem = Personagem(energia,habilidade,velocidade,resistencia,tipo)
+        novo_personagem = Personagem(energia, habilidade, velocidade,
+                                     resistencia, tipo)
         self.__personagens.append(novo_personagem)
         return novo_personagem
 
@@ -34,12 +35,14 @@ class ControladorJogo(AbstractControladorJogo):
     def jogada(self, mesa: Mesa) -> Jogador:
         vencedor = None
         if self.__turno <= 50:
-            if mesa.carta_jogador1 > mesa.carta_jogador2:
-                mesa.jogador1.inclui_carta_na_mao(mesa.carta_jogador1)
-                mesa.jogador1.inclui_carta_na_mao(mesa.carta_jogador2)
-            elif mesa.carta_jogador1 < mesa.carta_jogador2:
-                mesa.jogador2.inclui_carta_na_mao(mesa.carta_jogador1)
-                mesa.jogador2.inclui_carta_na_mao(mesa.carta_jogador2)
+            if mesa.carta_jogador1.valor_total_carta() \
+                    > mesa.carta_jogador2.valor_total_carta():
+                    mesa.jogador1.inclui_carta_na_mao(mesa.carta_jogador1)
+                    mesa.jogador1.inclui_carta_na_mao(mesa.carta_jogador2)
+            elif mesa.carta_jogador1.valor_total_carta() \
+                    < mesa.carta_jogador2.valor_total_carta():
+                    mesa.jogador2.inclui_carta_na_mao(mesa.carta_jogador1)
+                    mesa.jogador2.inclui_carta_na_mao(mesa.carta_jogador2)
             else:
                 mesa.jogador1.inclui_carta_na_mao(mesa.carta_jogador1)
                 mesa.jogador2.inclui_carta_na_mao(mesa.carta_jogador2)
